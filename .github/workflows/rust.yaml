@@ -1,3 +1,9 @@
+name: Rust CI
+
+on: 
+  push
+
+jobs:
   miri:
     name: "Miri"
     runs-on: ubuntu-latest
