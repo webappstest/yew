@@ -1,0 +1,23 @@
+name: Rust CI
+
+on: 
+  push
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Setup Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        profile: minimal
+        toolchain: stable
+        override: true
+    - name: Install cargo-careful
+      run: |
+        cargo install cargo-careful
+        rustup toolchain install nightly
+    - name: Run cargo-careful
+      run: cargo +nightly careful test
