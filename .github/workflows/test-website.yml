@@ -48,3 +48,9 @@ jobs:
 
       - name: Run website code snippet tests
         run: cargo test -p website-test --target wasm32-unknown-unknown
+      - name: Install cargo-careful
+        run: |
+          cargo install cargo-careful
+          rustup toolchain install nightly
+      - name: Run cargo-careful
+        run: cargo +nightly careful test
